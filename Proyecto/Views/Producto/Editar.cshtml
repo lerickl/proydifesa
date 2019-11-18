@@ -1,0 +1,61 @@
+﻿@using Proyecto.ClassAux;
+@{
+    /**/
+
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var prod = (ProductoAux)Model;
+}
+
+<section class="full-width pageContent">
+    <section class="full-width text-center" style="padding: 40px 0;">
+
+        <div id="Div-Form-Producto">
+
+            <h2>Editar Proucto @prod.Nombre</h2>
+
+            <form action="/Producto/Editar" method="post">
+
+                <input type="text" name="IdProducto" value="@prod.IdProducto" hidden />
+
+                <div class="form-group">
+                    <label for="">Nuevo nombre del producto</label>
+                    <input type="text" style="margin-left:1%; class="form-control" id="" placeholder="Ingrese nombre" value="@prod.Nombre" name="Nombre">
+                    <label class="alert-danger">@Html.ValidationMessage("Nombre")</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Nuevo stock del producto</label>
+                    <input type="number" style="margin-left:1%; class="" name="Stock" value="1" min="0" max="300" />
+                    <label class="alert-danger">@Html.ValidationMessage("Stock")</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Nuevo precio del producto</label>
+                    <input type="text" style="margin-left:1%; class="form-control" id="" placeholder="Ingrese Precio S./" value="@prod.Precio" name="Precio">
+                    <label class="alert-danger">@Html.ValidationMessage("Precio")</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Nueva unidad de medida</label>
+                    <select name="UnidadMedida">
+                        <option value="@ProductoAux.Unidades.KILO">@ProductoAux.Unidades.KILO</option>
+                        <option value="@ProductoAux.Unidades.LITROS">@ProductoAux.Unidades.LITROS</option>
+                        <option value="@ProductoAux.Unidades.METRO">@ProductoAux.Unidades.METRO</option>
+                        <option value="@ProductoAux.Unidades.GALON">@ProductoAux.Unidades.GALON</option>
+                        <option value="@ProductoAux.Unidades.UNIDAD">@ProductoAux.Unidades.UNIDAD</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Nueva descripción del producto</label>
+                    <textarea style="margin-left:41%; class="form-control" rows="3" name="Descripcion" placeholder="Ingrese una descripción"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-default">Guardar</button>
+            </form>
+
+        </div>
+</section>
+</section>

@@ -1,0 +1,90 @@
+﻿@using Proyecto.Session;
+@using Proyecto.Models;
+@{
+    /**/
+
+    ViewBag.Title = "Indexventas";
+    Layout = "~/Views/Shared/_VendedorLayout.cshtml";
+
+    var vendAct = (Vendedor)Session[SessionNameManager.Vend.VENDDATA];
+    var ventas = (List<DetalleVenta>)Model;
+    
+}
+
+
+  
+
+<section class="full-width pageContent">
+    <section class="full-width text-center" style="padding: 40px 0;">
+
+
+
+
+        <h1>Se ha logeado con codigo DNI @vendAct.Dni </h1>
+
+
+        @if (ventas.Count == 0)
+        {
+            <h3> Lo sentimos, aún no tiene ventas registradas</h3>
+
+        }
+        else
+        {
+
+            <h3>Ventas registradas</h3>
+            <h3></h3>
+
+            <h4> 0 = Cancelado  | 1 = Pendiente  |  2 = Anulado</h4>
+            <h3></h3>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td><b>#</b></td>
+                        <td><b>Cliente</b></td>
+                        <td><b>Producto</b></td>
+                        <td><b>Vendedor</b></td>
+                        <td><b>Fecha</b></td>
+                        <td><b>Total</b></td>
+                        <td><b>Estado del pago</b></td>
+                        <td><b>Cantidad</b></td>
+
+
+
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @for (int i = 0; i < ventas.Count; i++)
+                    {
+
+                        <tr>
+                            <td>@(i + 1)</td>
+
+
+                            <td>@ventas.ElementAt(i).IdCliente
+
+                            <td>@ventas.ElementAt(i).IdProducto</td>
+                            <td>@ventas.ElementAt(i).IdVendedor</td>
+
+                            <td>@ventas.ElementAt(i).Fecha</td>
+                            <td>@ventas.ElementAt(i).Total</td>
+                            <td>@ventas.ElementAt(i).Estado</td>
+                            <td>@ventas.ElementAt(i).Cantidad</td>
+
+
+
+
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+        }
+
+
+
+    </section>
+</section>

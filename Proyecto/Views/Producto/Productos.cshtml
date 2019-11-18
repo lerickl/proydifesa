@@ -1,0 +1,80 @@
+﻿@using Proyecto.Session;
+@using Proyecto.Models;
+@{
+    /**/
+
+    ViewBag.Title = "Productos";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var admin = (Administrador)Session[SessionNameManager.Admin.ADMINDATA];
+    var products = (List<Producto>)Model;
+}
+
+<section class="full-width pageContent">
+    <section class="full-width text-center" style="padding: 40px 0;">
+
+
+
+
+        <h1>Se ha logeado como @admin.Nombre @admin.ApPaterno @admin.ApPaterno</h1>
+        <h2>Con DNI @admin.Dni</h2>
+
+        @if (products.Count == 0)
+        {
+            <h3> Al parecer no tiene productos registrados :(</h3>
+
+        }
+        else
+        {
+
+            <h3>Productos registrados</h3>
+            <h3></h3>
+
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td><b>#</b></td>
+                        <td><b>Nombre</b></td>
+                        <td><b>Stock</b></td>
+                        <td><b>Precio S./</b></td>
+                        <td><b>Unidad de medida</b></td>
+
+
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @for (int i = 0; i < products.Count; i++)
+                    {
+
+                        <tr>
+                            <td>@(i + 1)</td>
+
+
+                            <td>@products.ElementAt(i).Nombre
+
+                            <td>@products.ElementAt(i).Stock</td>
+                            <td>@products.ElementAt(i).Precio</td>
+
+                            <td>@products.ElementAt(i).UnidadMedida</td>
+
+
+
+                            <td><a href="/Producto/Editar?id=@products.ElementAt(i).IdProducto">Editar</a></td>
+                            <td><a href="/Producto/Eliminar?id=@products.ElementAt(i).IdProducto">Eliminar</a></td>
+
+
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+        }
+
+
+
+    </section>
+</section>

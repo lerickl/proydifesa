@@ -1,0 +1,63 @@
+﻿
+@using Proyecto.Models;
+@{
+    ViewBag.Title = "Registrar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var vend = (Vendedor)Model;
+}
+
+
+<section class="full-width pageContent">
+    <section class="full-width text-center" style="padding: 40px 0;">
+
+        <div id="Div-Form-Vendedor">
+
+            <h2>Editar vendedor</h2>
+
+            <form action="/Vendedor/Editar" method="post">
+
+                <input type="text" name="IdVendedor" value="@vend.IdVendedor" hidden />
+
+                <div class="form-group"  >
+                    <label for="">Nuevo nombre del vendedor</label>
+                    <input type="text" style="text-align:center" class="form-control" id="" placeholder="Ingrese nombre" value="@vend.Nombre" name="Nombre">
+                    <label class="alert-danger">@Html.ValidationMessage("Nombre")</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Nuevo apellido paterno del vendedor</label>
+                    <input type="text" class="form-control" placeholder="Ingrese apellido paterno" name="ApPaterno" value="@vend.ApPaterno" />
+                    <label class="alert-danger">@Html.ValidationMessage("ApPaterno")</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Nuevo apellido materno del vendedor</label>
+                    <input type="text" class="form-control" placeholder="Ingrese Apellido materno" name="ApMaterno" value="@vend.ApMaterno" />
+                    <label class="alert-danger">@Html.ValidationMessage("ApMaterno")</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Nuevo DNI del vendedor</label>
+                    <input type="text" class="form-control" id="" placeholder="DNI" value="@vend.Dni" name="Dni">
+                    <label class="alert-danger">@Html.ValidationMessage("Dni")</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Nueva dirección del vendedor</label>
+                    <input type="text" class="form-control" id="" placeholder="Ingrese dirección"
+                           value="@vend.Direccion" name="Direccion" />
+                </div>
+
+                <div class="form-group">
+                    <label for="">Nueva pass para el vendedor</label>
+                    <input type="password" class="form-control" id="" placeholder="Pass" name="Pass">
+                    <label class="alert-danger">@Html.ValidationMessage("Pass")</label>
+                </div>
+
+                <button type="submit" class="btn btn-default">Guardar cambios</button>
+            </form>
+
+        </div>
+</section>
+</section>

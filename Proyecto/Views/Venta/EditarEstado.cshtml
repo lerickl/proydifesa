@@ -1,0 +1,34 @@
+﻿@using Proyecto.ClassAux;
+@{
+    ViewBag.Title = "EditarEstado";
+    Layout = "~/Views/Shared/_VendedorLayout.cshtml";
+    var result = (ObjEditar)Model;
+
+    var det = result.detalle;
+}
+
+<section class="full-width pageContent">
+    <section class="full-width text-center" style="padding: 40px 0;">
+
+
+        <h2>EditarEstado del detalle de venta con ID # @det.IdDetalleVenta</h2>
+        <h3>Detalle de venta hecha al usuario: @result.info.findCliente(det.IdCliente).Nombre</h3>
+        <h4>Producto vendido: @result.info.findProduc(result.detalle.IdProducto).Nombre</h4>
+        <h5>Cantidad fue: @det.Cantidad --- Subtotal S./ @det.Total </h5>
+        <h5>Con la fecha: @det.Fecha </h5>
+
+        <form action="/Venta/EditarEstado" method="post">
+            <label>Ingrese nuevo estado de la venta</label> <br />
+            <input type="text" name="idDet" value="@det.IdDetalleVenta" hidden />
+            <select name="newEstado">
+                <option value="@EstadoVenta.ANULADO">Anulado</option>
+                <option value="@EstadoVenta.CANCELADO">Cancelado</option>
+                <option value="@EstadoVenta.PENDIENTE">Pendiente</option>
+            </select>
+
+            <button>Aceptar</button>
+
+        </form>
+
+    </section>
+</section>

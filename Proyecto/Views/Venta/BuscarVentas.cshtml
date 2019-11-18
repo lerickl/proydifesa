@@ -1,0 +1,65 @@
+﻿@using Proyecto.ClassAux;
+@{
+    ViewBag.Title = "BuscarVentas";
+    Layout = "~/Views/Shared/_VendedorLayout.cshtml";
+
+    var result = (ObjetoBuscar)Model;
+    var ventas = result.detalleVentas;
+}
+
+
+
+<section class="full-width pageContent">
+    <section class="full-width text-center" style="padding: 40px 0;">
+
+        <h2>BuscarVentas por DNI de cliente</h2>
+
+        <form action="/Venta/BuscarVentas" method="post" class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input name="key" type="text" style="margin-center:1%; class="form-control" placeholder="Search" value="@ViewBag.key">
+            </div>
+            <button class="btn btn-default">Buscar</button>
+        </form>
+        <br />
+
+        @if (ventas.Count == 0)
+        {
+            <h3>No se encontraron coincidencias! o aún no ingresas algo para buscar</h3>
+        }
+        else
+        {
+            <div id="Div-Cont-Ventas">
+                <h2>Ventas hechas al usuario @ViewBag.user.Nombre con el DNI @ViewBag.user.Dni</h2>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <td># id venta</td>
+                            <td>Fecha</td>
+                            <td>Nombre producto</td>
+                            <td>Cantidad</td>
+                            <td>Estado</td>
+                            <td>Total S./</td>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var vent in ventas)
+                        {
+                            <tr>
+                                <td>@vent.IdDetalleVenta</td>
+                                <td>@vent.Fecha</td>
+                                <td>@result.info.findProduc(vent.IdProducto).Nombre</td>
+                                <td>@vent.Cantidad</td>
+                                <td>@result.info.getRepresEstado(vent.Estado)</td>
+                                <td>@vent.Total</td>
+                                <td><a href="/Venta/EditarEstado?id=@vent.IdDetalleVenta">Editar estado</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+</section>
+</section>

@@ -1,0 +1,30 @@
+﻿@using Proyecto.Models;
+@{
+    ViewBag.Title = "LoginVend";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var vend = (Vendedor)Model;
+}
+
+<link href="~/Scripts/login.css" rel="stylesheet" />
+<br />
+<br />
+<br />
+
+<div class="main" align="center">
+    <p class="sign" align="center">Login Vendedor</p>
+    <form class="form1" action="/Home/LoginVend" method="post" align="center">
+
+        <input class="un" type="text" name="Dni" id="" value="@vend.Dni" placeholder="Ingrese Dni" style="color: black" />
+        <label class="alert-danger">@Html.ValidationMessage("Dni")</label>
+
+        <input class="pass" type="password" id="" name="Pass" placeholder="Ingrese Contraseña" style="color: black" />
+        <label class="alert-danger">@Html.ValidationMessage("Pass")</label>
+
+
+        <input class="submit" align="center" type="submit" value="Iniciar Sesion" />
+        <label class="alert-danger" align="center">@Html.ValidationMessage("General")</label>
+    </form>
+
+
+</div>

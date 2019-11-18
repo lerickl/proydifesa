@@ -1,0 +1,111 @@
+﻿@using Proyecto.Models;
+@using Proyecto.Session;
+@using Proyecto.ClassAux;
+@{
+
+    ViewBag.Title = "Realizar";
+    Layout = "~/Views/Shared/_VendedorLayout.cshtml";
+    var vendAct = (Vendedor)Session[SessionNameManager.Vend.VENDDATA];
+}
+
+
+
+
+Buscar Cliente
+
+<section class="full-width pageContent" >
+    <section class="full-width text"   style="margin-left:1%">
+        <h2 style="color:dodgerblue"  >Realizar Venta</h2>
+
+        @* Cliente *@
+        <div id="Div-ClienteOpc">
+
+            <label id="Lbl-Encontrado"></label>
+
+            <div id="Div-OpcionCliente" >
+                <h4 style="color:dodgerblue" >Buscar Cliente</h4>
+            </div>
+
+
+            <div id="Div-ClienteRegis">
+                <div class="form-group">
+                    <input id="Input-BuscarCliente" type="text" class="form-control" placeholder="Busca por nombre o dni" />
+                    
+                </div>
+              
+                <label id="Lbl-Encontrado2"></label>
+            </div>
+
+
+            <div id="Div-ClienteNoRegis" hidden>
+                <div id="Div-Form-Cont">
+
+                </div>
+            </div>
+
+        </div>
+
+        @* cuerpo producto *@
+        <div id="Div-Cuerpo-Venta" style="margin-left:1%">
+
+            <h4 style="color:dodgerblue">Buscar producto</h4>
+            <div class="form-group">
+                <input id="Input-Busqueda" type="text" align="center" ; class="form-control" placeholder="Busca por nombre">
+            </div>
+            <button id="Btn-BuscarProducto" class="btn btn-default">Buscar</button>
+
+            </br>
+            <h1></h1>
+            <h1></h1>
+            <h1></h1>
+
+            <label id="Lbl-ProductoEncontrado"> </label>
+            <label id="Lbl-NombreProducto"></label>
+
+            <div id="Div-ProductoEncontrar">
+                <label>Cantidad a vender</label>
+                <label id="Lbl-MensajeProducto"></label>
+                </br>
+
+
+                <form id="Form-Add-VentaDetalle" action="/Venta/AddDetalle" method="post">
+                    <input type="text" name="IdCliente" hidden />
+                    <input type="text" name="IdProducto" hidden />
+                    <input type="text" name="IdVendedor" value="@vendAct.IdVendedor" hidden />
+
+                    <input type="text" name="Total" hidden />
+                    <input type="number" value="" min="1" max="" name="Cantidad" />
+                    <input type="text" name="precioProd" hidden />
+
+                    <label>Ingrese estado de la venta</label>
+                    <select name="Estado">
+                        <option value="@EstadoVenta.CANCELADO">Cancelado(pagado)</option>
+                        <option value="@EstadoVenta.PENDIENTE">Pendiente</option>
+                    </select>
+
+
+                    <button id="Btn-AgregarDetalleVenta">Agregar</button>
+                    </br>
+                    </br>
+                </form>
+
+
+            </div>
+
+            <table class="table table-hover">
+
+                <thead>
+                    <tr>
+                        <td><b>Nombre</b></td>
+                        <td><b>Cantidad</b></td>
+                        <td><b>Sub-total S./</b></td>
+                    </tr>
+                </thead>
+                <tbody id="TBodyVenta"></tbody>
+            </table>
+            <button id="Btn-RealizarCompra">Realizar la venta</button>
+            <label id="Lbl-TotalGananciasVenta"></label>
+
+        </div>
+    </section>
+</section>

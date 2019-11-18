@@ -1,0 +1,74 @@
+﻿
+@using Proyecto.Session;
+@using Proyecto.Models;
+@{
+    /**/
+
+    ViewBag.Title = "Listar";
+    Layout = "~/Views/Shared/_VendedorLayout.cshtml";
+
+    var vendAct = (Vendedor)Session[SessionNameManager.Vend.VENDDATA];
+    var clientes = (List<Cliente>)Model;
+}
+
+<section class="full-width pageContent">
+    <section class="full-width text-center" style="padding: 40px 0;">
+
+
+
+
+        <h1>Se ha logeado como @vendAct.Nombre @vendAct.ApPaterno</h1>
+        <h2>Con DNI @vendAct.Dni</h2>
+
+        @if (clientes.Count == 0)
+        {
+            <h3> Al parecer no tiene clientes registrados :(</h3>
+
+        }
+        else
+        {
+
+            <h3>Clientes registrados</h3>
+            <h3></h3>
+
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td><b>#</b></td>
+                        <td><b>Nombre</b></td>
+                        <td><b>DNI</b></td>
+                        <td><b>Direccion</b></td>
+                       
+
+
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @for (int i = 0; i < clientes.Count; i++)
+                    {
+
+                        <tr>
+                            <td>@(i + 1)</td>
+                            <td>@clientes.ElementAt(i).Nombre
+                            <td>@clientes.ElementAt(i).Dni</td>
+                            <td>@clientes.ElementAt(i).Direccion</td>
+                            <td><a href="/Cliente/Eliminar?id=@clientes.ElementAt(i).IdCliente">Eliminar</a></td>
+                            
+
+
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+        }
+
+
+
+    </section>
+</section>
+

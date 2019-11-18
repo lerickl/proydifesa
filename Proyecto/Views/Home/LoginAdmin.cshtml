@@ -1,0 +1,29 @@
+﻿@using Proyecto.Models;
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var admin = (Administrador)Model;
+
+}
+<link href="~/Scripts/login.css" rel="stylesheet" />
+<br />
+<br />
+<br />
+
+<div class="main" align="center">
+    <p class="sign" align="center">Login Admin</p>
+    <form class="form1" action="/Home/LoginAdmin" method="post">
+       
+        <input type="text" class="un" id="" placeholder="Dni" value="@admin.Dni" name="Dni">
+        <label class="alert-danger">@Html.ValidationMessage("Dni")</label>
+
+        <input type="password" class="pass" id="" placeholder="Pass" name="Pass">
+        <label class="alert-danger">@Html.ValidationMessage("Pass")</label>
+
+        <input class="submit" align="center" type="submit" value="Iniciar Sesion" />
+        <label class="alert-danger" align="center">@Html.ValidationMessage("General")</label>
+    </form>
+
+
+</div>

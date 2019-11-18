@@ -1,0 +1,206 @@
+﻿@using Proyecto.Session;
+@using Proyecto.Models;
+
+@{
+    var vendAct = (Vendedor)Session[SessionNameManager.Vend.VENDDATA];
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Difesa</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <! - Aqui empieza mi parte ->
+    <link rel="stylesheet" href="~/css/normalize.css">
+    <link rel="stylesheet" href="~/css/sweetalert2.css">
+    <link rel="stylesheet" href="~/css/material.min.css">
+    <link rel="stylesheet" href="~/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="~/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="~/css/main.css">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="~/js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script>window.jQuery || document.write('<script src="~/js/jquery-1.11.2.min.js"><\/script>')</script>
+    <script src="~/js/material.min.js"></script>
+    <script src="~/js/sweetalert2.min.js"></script>
+    <script src="~/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/js/main.js"></script>
+
+
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- import JavaScript -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+    <!-- load jQuery 1.8.0 -->
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.8.0.js"></script>
+    @*<script type="text/javascript">
+            var jQuery_1_8_0 = jQuery.noConflict(true);
+        </script>*@
+    <link rel="Stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/redmond/jquery-ui.css" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.22/jquery-ui.js"></script>
+    @*<script>var $jQuery_1_8_0 = jQuery.noConflict();</script>*@
+
+</head>
+<body>
+
+    <div class="full-width navBar">
+        <div class="full-width navBar-options">
+            <i class="zmdi zmdi-more-vert btn-menu" id="btn-menu"></i>
+            <div class="mdl-tooltip" for="btn-menu">Menu</div>
+            <nav class="navBar-options-list">
+                <ul class="list-unstyle">
+                    <li class="btn-exit" id="btn-exit">
+                        <i class="zmdi zmdi-power"></i>
+                        <div class="mdl-tooltip" for="btn-exit">LogOut</div>
+                    </li>
+                    <li class="text-condensedLight noLink"><small>Logout</small></li>
+                    <li class="noLink">
+                        <figure>
+                            <img src="~/assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+                        </figure>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- navLateral -->
+    <section class="full-width navLateral">
+        <div class="full-width navLateral-bg btn-menu"></div>
+        <div class="full-width navLateral-body">
+            <div class="full-width navLateral-body-logo text-center tittles">
+                <i class="zmdi zmdi-close btn-menu"></i> DIFESA
+            </div>
+            <figure class="full-width" style="height: 77px;">
+                <div class="navLateral-body-cl">
+                    <img src="~/assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+                </div>
+                <figcaption class="navLateral-body-cr hide-on-tablet">
+                    <span>
+                       <br>
+                       <h4>Bienvenido Vendedor: <b>@vendAct.Nombre</b></h4>
+                    </span>
+                </figcaption>
+            </figure>
+            <div class="full-width tittles navLateral-body-tittle-menu">
+                <i class="zmdi zmdi-desktop-mac"></i><span class="hide-on-tablet">&nbsp; MENÚ</span>
+            </div>
+            <nav class="full-width">
+                <ul class="full-width list-unstyle menu-principal">
+                    <li class="full-width">
+                        <a href="~/Reporte/Reportes" class="full-width">
+                            <div class="navLateral-body-cl">
+                                <i class="zmdi zmdi-view-dashboard"></i>
+                            </div>
+                            <div class="navLateral-body-cr hide-on-tablet">
+                                REPORTES
+                            </div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl">
+                                <i class="zmdi zmdi-face"></i>
+                            </div>
+                            <div class="navLateral-body-cr hide-on-tablet">
+                                CLIENTES
+                            </div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="~/Cliente/Registrar" class="full-width">
+                                    <div class="navLateral-body-cl">
+                                        <i class="zmdi zmdi-account"></i>
+                                    </div>
+                                    <div class="navLateral-body-cr hide-on-tablet">
+                                        REGISTRAR CLIENTE
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="~/Cliente/Listar" class="full-width">
+                                    <div class="navLateral-body-cl">
+                                        <i class="zmdi zmdi-accounts"></i>
+                                    </div>
+                                    <div class="navLateral-body-cr hide-on-tablet">
+                                        LISTA DE CLIENTES
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+
+                    <li class="full-width">
+                        <a href="#" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl">
+                                <i class="zmdi zmdi-shopping-cart"></i>
+                            </div>
+                            <div class="navLateral-body-cr hide-on-tablet">
+                                VENTAS
+                            </div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="~/Venta/IndexventasV" class="full-width">
+                                    <div class="navLateral-body-cl">
+                                        <i class="zmdi zmdi-account"></i>
+                                    </div>
+                                    <div class="navLateral-body-cr hide-on-tablet">
+                                        LISTA DE VENTAS
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="~/Venta/Realizar" class="full-width">
+                                    <div class="navLateral-body-cl">
+                                        <i class="zmdi zmdi-account"></i>
+                                    </div>
+                                    <div class="navLateral-body-cr hide-on-tablet">
+                                        REGISTRAR VENTA
+                                    </div>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <div class="container body-content">
+        @RenderBody()
+        <footer>
+            <p>&copy; @DateTime.Now.DayOfWeek - DIFESA 2019</p>
+        </footer>
+
+    </div>
+
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript" src="~/CustomStyle/custom.js"></script>
+    <script type="text/javascript" src="~/CustomStyle/Autocomplete.js"></script>
+
+</body>
+
+
+
+</html>

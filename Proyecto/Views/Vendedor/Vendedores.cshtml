@@ -1,0 +1,60 @@
+﻿@using Proyecto.Models;
+@{
+                /**/
+
+                /**/
+
+                ViewBag.Title = "Vendedores";
+                Layout = "~/Views/Shared/_AdminLayout.cshtml";
+                var vends = (List<Vendedor>)Model;
+}
+
+
+<section class="full-width pageContent">
+    <section class="full-width text-center" style="padding: 40px 0;">
+
+
+        @if (vends.Count == 0)
+        {
+            <h3> Al parecer no tiene vendedores registrados :(</h3>
+        }
+        else
+        {
+
+            <h3>Vendedores registrados por usted</h3>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Nombre</td>
+                        <td>Ap. Paterno</td>
+                        <td>Ap. Materno</td>
+                        <td>Dirección</td>
+                        <td>DNI</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @for (int i = 0; i < vends.Count; i++)
+                    {
+                        <tr>
+                            <td>@(i + 1)</td>
+                            <td>@vends.ElementAt(i).Nombre</td>
+                            <td>@vends.ElementAt(i).ApPaterno</td>
+                            <td>@vends.ElementAt(i).ApMaterno</td>
+                            <td>@vends.ElementAt(i).Direccion</td>
+                            <td>@vends.ElementAt(i).Dni</td>
+                            <td><a href="/Vendedor/Editar?id=@vends.ElementAt(i).IdVendedor">Editar</a></td>
+                            <td><a href="/Vendedor/Eliminar?id=@vends.ElementAt(i).IdVendedor">Eliminar</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        }
+
+
+</section>
+</section>
